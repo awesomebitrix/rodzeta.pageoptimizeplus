@@ -19,9 +19,9 @@ http://villa-mia.ru/
 
 Оказывается на платной основе, e-mail: rivetweb@yandex.ru
 
-Багрепорты и предложения на https://github.com/rivetweb/bitrix-rodzeta.pageoptimizer/issues
+Багрепорты и предложения на https://github.com/rivetweb/bitrix-rodzeta.pageoptimizeplus/issues
 
-Пул реквесты на https://github.com/rivetweb/bitrix-rodzeta.pageoptimizer/pulls
+Пул реквесты на https://github.com/rivetweb/bitrix-rodzeta.pageoptimizeplus/pulls
 
 ## TODO
 
