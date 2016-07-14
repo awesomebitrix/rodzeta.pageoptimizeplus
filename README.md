@@ -22,7 +22,3 @@ http://villa-mia.ru/
 Багрепорты и предложения на https://github.com/rivetweb/bitrix-rodzeta.pageoptimizeplus/issues
 
 Пул реквесты на https://github.com/rivetweb/bitrix-rodzeta.pageoptimizeplus/pulls
-
-## TODO
-
-- оптимизации js и css с помощью сторонних сервисов
