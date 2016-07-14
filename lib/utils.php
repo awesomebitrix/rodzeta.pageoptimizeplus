@@ -5,7 +5,7 @@
  * MIT License
  ************************************************************************************************/
 
-namespace Rodzeta\Feedbackfields;
+namespace Rodzeta\Pageoptimizeplus;
 
 use \Bitrix\Main\Config\Option;
 
