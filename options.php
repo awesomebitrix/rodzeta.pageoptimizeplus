@@ -1,16 +1,15 @@
 <?php
-/***********************************************************************************************
+/*******************************************************************************
  * rodzeta.pageoptimizeplus - Additional page optimizations
  * Copyright 2016 Semenov Roman
  * MIT License
- ************************************************************************************************/
+ ******************************************************************************/
 
 defined('B_PROLOG_INCLUDED') and (B_PROLOG_INCLUDED === true) or die();
 
 use Bitrix\Main\Application;
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\Localization\Loc;
-use Bitrix\Main\Text\String;
 use Bitrix\Main\Loader;
 
 if (!$USER->isAdmin()) {
