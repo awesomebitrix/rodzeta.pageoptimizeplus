@@ -22,7 +22,7 @@ EventManager::getInstance()->addEventHandler("main", "OnEndBufferContent", funct
 
 	// move css to bottom page
 	if (Option::get("rodzeta.pageoptimizeplus", "move_css") == "Y") {
-		$styles = array();
+		$styles = [];
 		// process all link tags
 		$content = preg_replace_callback(
 			'{<link([^>]*)>}is',

@@ -22,13 +22,13 @@ $request = $context->getRequest();
 
 Loc::loadMessages(__FILE__);
 
-$tabControl = new CAdminTabControl("tabControl", array(
-  array(
+$tabControl = new CAdminTabControl("tabControl", [
+  [
 		"DIV" => "edit1",
 		"TAB" => Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_MAIN_TAB_SET"),
 		"TITLE" => Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_MAIN_TAB_TITLE_SET"),
-  ),
-));
+  ],
+]);
 
 ?>
 
@@ -38,10 +38,10 @@ if ($request->isPost() && check_bitrix_sessid()) {
 	if (!empty($save) || !empty($restore)) {
 		Option::set("rodzeta.pageoptimizeplus", "move_css", $request->getPost("move_css"));
 
-		CAdminMessage::showMessage(array(
+		CAdminMessage::showMessage([
 	    "MESSAGE" => Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_OPTIONS_SAVED"),
 	    "TYPE" => "OK",
-	  ));
+	  ]);
 	}
 }
 
