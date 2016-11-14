@@ -70,7 +70,7 @@ EventManager::getInstance()->addEventHandler("main", "OnEndBufferContent", funct
 		*/
 
 		// move collected style tags
-		$content = str_replace("</body>", implode("\n", $styles) . "</body>", $content);
+		$content = str_replace("</body>", implode("\n", $styles) . "\n</body>", $content);
 	}
 
 });
