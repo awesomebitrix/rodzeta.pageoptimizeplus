@@ -40,8 +40,37 @@ EventManager::getInstance()->addEventHandler("main", "OnEndBufferContent", funct
 			},
 			$content
 		);
+
+		/*
+		$stylesUrls = [];
+		foreach ($styles as $styleTag) {
+			if (preg_match('{href=([^\s]+)}i', $styleTag, $attrs)) {
+				$stylesUrls[] = substr($attrs[1], 1, -1);
+			}
+		}
+		$content = str_replace("</head>", '
+			<script data-skip-moving="true">
+				(function () {
+					var styles = ' . json_encode($stylesUrls) . ';
+					for (var i in styles) {
+						var css = document.createElement("link");
+						css.setAttribute("rel", "stylesheet");
+						css.setAttribute("type", "text/css");
+						css.setAttribute("href", styles[i]);
+						document.getElementsByTagName("head")[0].appendChild(css);
+					}
+				})();
+			</script>
+			</head>', $content);
+		$content = str_replace("</body>", "
+			<noscript>
+				" . implode("\n", $styles) . "
+			</noscript>
+			</body>", $content);
+		*/
+
 		// move collected style tags
-		$content = str_ireplace("</body>", implode("\n", $styles) . "\n</body>", $content);
+		$content = str_replace("</body>", implode("\n", $styles) . "</body>", $content);
 	}
 
 });
