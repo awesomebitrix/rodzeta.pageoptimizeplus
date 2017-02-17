@@ -1,9 +1,0 @@
-
-- optimize-images - проходит по указанным папкам и оптимизирует файлы ?с заменой оригиналов
-	- src_dirs="upload bitrix/templates local/templates"
-
-
-- optimize js css - src_dirs="bitrix/templates local/templates"
-	- проходит по файлам шаблона - через clojure-compiler создаютcя *.min.js
-	- проходит по файлам шаблона - через yui-compressor создаютcя *.min.css
-
