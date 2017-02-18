@@ -11,8 +11,8 @@ function Options() {
 	// TODO get folders from settings
 	return array(
 		"src_folders" => array(
-			"/bitrix/templates/furniture_pale-blue",
-			"/local/templates/furniture_pale-blue",
+			"/bitrix/templates/",
+			"/local/templates/",
 			"/upload/",
 		),
 	);
