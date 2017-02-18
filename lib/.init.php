@@ -11,21 +11,20 @@ function OptimizeCss() {
 	set_time_limit(30 * 60);
 
 	$srcFolders = array(
-		"/bitrix/templates/",
-		"/local/templates/",
+		"/bitrix/templates/furniture_pale-blue",
+		"/local/templates/furniture_pale-blue",
 	);
 	$basePath = dirname(dirname(dirname(dirname(__DIR__))));
 	foreach ($srcFolders as $path) {
 		if (!is_dir($basePath . $path)) {
 			continue;
 		}
-		$it = new RegexIterator(
-			new \RecursiveIteratorIterator(
-				new \RecursiveDirectoryIterator($basePath . $path)),
-			'/^.+\.css$/i',
-			RecursiveRegexIterator::GET_MATCH
-		);
-		foreach ($it as $name => $f) {
+		$it = new \RecursiveIteratorIterator(
+				new \RecursiveDirectoryIterator($basePath . $path));
+		foreach ($it as $name) {
+			if (substr($name, -4) != ".css" || substr($name, -8) == ".min.css") {
+				continue;
+			}
 			echo "$name\n";
 		}
 	}
