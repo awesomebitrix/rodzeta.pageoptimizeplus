@@ -12,6 +12,30 @@
 - для тегов которые не нужно переносить - пропишите атрибут data-skip-moving="true"
 - применить очистку файлов кеша /bitrix/admin/cache.php?lang=ru
 
+### Использование скриптов для оптимизации
+
+- для сайта в Bitrix-окружении для Windows запускать из папки модуля \bitrix\modules\rodzeta.pageoptimizeplus\bin
+
+`"../../../../../apache2/zendserver/bin/php" optimize-css.php`
+
+`"../../../../../apache2/zendserver/bin/php" optimize-images.php`
+
+`"../../../../../apache2/zendserver/bin/php" optimize-js.php`
+
+- для любой версии интерпретатора или если есть возможность запуска на сервере - запускать из папки модуля
+
+`php optimize-css.php`
+
+`php optimize-images.php`
+
+`php optimize-js.php`
+
+- для Linux необходимо установить optipng и jpegoptim, например
+
+`sudo apt install optipng`
+
+`sudo apt install jpegoptim`
+
 ## Описание техподдержки и контактных данных
 
 Тех. поддержка и кастомизация оказывается на платной основе, e-mail: rivetweb@yandex.ru

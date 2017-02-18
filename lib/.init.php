@@ -70,8 +70,6 @@ function OptimizeJs() {
 
 function OptimizeImages() {
 	// https://developers.google.com/speed/docs/insights/OptimizeImages?hl=ru
-	// sudo apt install optipng
-	// sudo apt install jpegoptim
 	set_time_limit(30 * 60);
 	$options = Options();
 	$basePath = dirname(dirname(dirname(dirname(__DIR__))));
