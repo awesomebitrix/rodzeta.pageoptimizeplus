@@ -78,10 +78,11 @@ function init() {
 		*/
 
 		// move collected style tags
+		// https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery?hl=ru
 		if (!empty(ctx::$styles)) {
 			$content = str_replace(
-				"</body>",
-				implode("\n", ctx::$styles) . "\n</body>",
+				"</html>",
+				"</html>\n" . implode("\n", ctx::$styles),
 				$content
 			);
 		}
