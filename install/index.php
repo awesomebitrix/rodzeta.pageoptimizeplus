@@ -7,12 +7,9 @@
 
 // NOTE this file must compatible with php 5.3
 
-defined('B_PROLOG_INCLUDED') and (B_PROLOG_INCLUDED === true) or die();
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-use Bitrix\Main\Application;
-use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
-use Bitrix\Main\ModuleManager;
 
 Loc::loadMessages(__FILE__);
 
@@ -52,19 +49,13 @@ class rodzeta_pageoptimizeplus extends CModule {
 	}
 
 	function DoInstall() {
-		if (version_compare(PHP_VERSION, '7', '<')) {
-			global $APPLICATION;
-   		$APPLICATION->ThrowException(Loc::getMessage("RODZETA_REQUIREMENTS_PHP_VERSION"));
-			return false;
-		}
-
-		ModuleManager::registerModule($this->MODULE_ID);
+		RegisterModule($this->MODULE_ID);
 		RegisterModuleDependences("main", "OnPageStart", $this->MODULE_ID);
 	}
 
 	function DoUninstall() {
 		UnRegisterModuleDependences("main", "OnPageStart", $this->MODULE_ID);
-		ModuleManager::unregisterModule($this->MODULE_ID);
+		UnRegisterModule($this->MODULE_ID);
 	}
 
 }
