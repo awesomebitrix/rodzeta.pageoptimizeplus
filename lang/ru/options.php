@@ -1,5 +1,6 @@
 <?php
 
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_MAIN_TAB_SET"] = "РќР°СЃС‚СЂРѕР№РєРё";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_MAIN_TAB_TITLE_SET"] = "РќР°СЃС‚СЂРѕР№РєР° РїР°СЂР°РјРµС‚СЂРѕРІ РјРѕРґСѓР»СЏ";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_OPTIONS_SAVED"] = "РќР°СЃС‚СЂРѕР№РєРё СЃРѕС…СЂР°РЅРµРЅС‹";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_MAIN_TAB_SET"] = "Настройки";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_MAIN_TAB_TITLE_SET"] = "Настройка параметров модуля";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_OPTIONS_SAVED"] = "Настройки сохранены";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_MOVE_STYLES"] = "Перемещать теги стилей вниз";

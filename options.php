@@ -56,7 +56,7 @@ $tabControl->begin();
 
 	<tr>
 		<td class="adm-detail-content-cell-l" width="50%">
-			<label>Перемещать теги стилей вниз</label>
+			<label><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_MOVE_STYLES") ?></label>
 		</td>
 		<td class="adm-detail-content-cell-r" width="50%">
 			<input name="move_css" value="Y" type="checkbox"

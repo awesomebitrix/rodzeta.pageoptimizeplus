@@ -1,6 +1,6 @@
 <?php
 
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_MODULE_NAME"] = "Ð”Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð°Ñ Ð¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð°Ñ†Ð¸Ñ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_MODULE_DESCRIPTION"] = "Ð”Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð´ÑƒÐ»ÑŒ Ð¿ÐµÑ€ÐµÐ¼ÐµÑ‰Ð°ÐµÑ‚ css Ð²Ð½Ð¸Ð· ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_MODULE_NAME"] = "Äîïîëíèòåëüíàÿ îïòèìèçàöèÿ ñòðàíèö";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_MODULE_DESCRIPTION"] = "Äàííûé ìîäóëü ïåðåìåùàåò css âíèç ñòðàíèöû";
 
-$MESS["RODZETA_REQUIREMENTS_PHP_VERSION"] = "ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð° Ð²ÐµÑ€ÑÐ¸Ñ PHP 7 Ð¸Ð»Ð¸ Ð²Ñ‹ÑˆÐµ";
+$MESS["RODZETA_REQUIREMENTS_PHP_VERSION"] = "Íåîáõîäèìà âåðñèÿ PHP 7 èëè âûøå";
