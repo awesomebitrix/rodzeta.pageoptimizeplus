@@ -5,20 +5,20 @@
 
 Данный модуль перемещает css теги (link) вниз страницы, для выполнения требования инструмента PageSpeed Insights.
 
-## Как работает
+## Описание установки и настройки решения
 
 - включите опцию в настройках для перемещения тегов стилей вниз;
 - для тегов которые не нужно переносить - пропишите атрибут data-skip-moving="true"
 - применить очистку файлов кеша /bitrix/admin/cache.php?lang=ru
 
-## Демо сайт
+## Описание техподдержки и контактных данных
 
-http://villa-mia.ru/
-
-## Тех. поддержка и кастомизация
-
-Оказывается на платной основе, e-mail: rivetweb@yandex.ru
+Тех. поддержка и кастомизация оказывается на платной основе, e-mail: rivetweb@yandex.ru
 
 Багрепорты и предложения на https://github.com/rivetweb/bitrix-rodzeta.pageoptimizeplus/issues
 
 Пул реквесты на https://github.com/rivetweb/bitrix-rodzeta.pageoptimizeplus/pulls
+
+## Ссылка на демо-версию
+
+http://villa-mia.ru/

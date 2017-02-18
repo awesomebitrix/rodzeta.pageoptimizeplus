@@ -5,39 +5,48 @@
  * MIT License
  ******************************************************************************/
 
-defined('B_PROLOG_INCLUDED') and (B_PROLOG_INCLUDED === true) or die();
+namespace Rodzeta\Pageoptimizeplus;
 
-use Bitrix\Main\Loader;
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
 use Bitrix\Main\EventManager;
 use Bitrix\Main\Config\Option;
 
-EventManager::getInstance()->addEventHandler("main", "OnEndBufferContent", function (&$content) {
-	if (CSite::InDir("/bitrix/")) {
-		return;
-	}
-	global $APPLICATION;
-	if ($APPLICATION->showPanelWasInvoked) { // ignore for admin panel
-		return;
-	}
+class ctx {
+	static $styles;
+}
 
-	// move css to bottom page
-	if (Option::get("rodzeta.pageoptimizeplus", "move_css") == "Y") {
-		$styles = [];
+function ReplaceStyles($m) {
+	// ignore with attr data-skip-moving
+	if (strpos($m[1], 'data-skip-moving="true"') !== false) {
+		return $m[0];
+	}
+	// ignore other types
+	if (strpos($m[1], "stylesheet") === false) {
+		return $m[0];
+	}
+	ctx::$styles[] = $m[0];
+	return "";
+}
+
+function init() {
+	EventManager::getInstance()->addEventHandler("main", "OnEndBufferContent", function (&$content) {
+		if (\CSite::InDir("/bitrix/")) {
+			return;
+		}
+		global $APPLICATION;
+		if ($APPLICATION->showPanelWasInvoked) { // ignore for admin panel
+			return;
+		}
+		// move css to bottom page
+		if (Option::get("rodzeta.pageoptimizeplus", "move_css") != "Y") {
+			return;
+		}
+		ctx::$styles = array();
 		// process all link tags
 		$content = preg_replace_callback(
 			'{<link([^>]*)>}is',
-			function ($m) use (&$styles) {
-				// ignore with attr data-skip-moving
-				if (strpos($m[1], 'data-skip-moving="true"') !== false) {
-					return $m[0];
-				}
-				// ignore other types
-				if (strpos($m[1], "stylesheet") === false) {
-					return $m[0];
-				}
-				$styles[] = $m[0];
-				return "";
-			},
+			__NAMESPACE__ . "\ReplaceStyles",
 			$content
 		);
 
@@ -70,7 +79,14 @@ EventManager::getInstance()->addEventHandler("main", "OnEndBufferContent", funct
 		*/
 
 		// move collected style tags
-		$content = str_replace("</body>", implode("\n", $styles) . "\n</body>", $content);
-	}
+		if (!empty(ctx::$styles)) {
+			$content = str_replace(
+				"</body>",
+				implode("\n", ctx::$styles) . "\n</body>",
+				$content
+			);
+		}
+	});
+}
 
-});
+init();
