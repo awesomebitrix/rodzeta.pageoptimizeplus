@@ -12,6 +12,7 @@ function Options() {
 		"src_folders" => array(
 			"/bitrix/templates/furniture_pale-blue",
 			"/local/templates/furniture_pale-blue",
+			"/upload/",
 		),
 	);
 }
@@ -62,6 +63,30 @@ function OptimizeJs() {
 			$tmp = sprintf($cmd, escapeshellarg($name), escapeshellarg($dest));
 			echo "$tmp\n";
 			exec($tmp);
+		}
+	}
+}
+
+function OptimizeImages() {
+	set_time_limit(30 * 60);
+	$options = Options();
+	$basePath = dirname(dirname(dirname(dirname(__DIR__))));
+	foreach ($options["src_folders"] as $path) {
+		if (!is_dir($basePath . $path)) {
+			continue;
+		}
+		$it = new \RecursiveIteratorIterator(
+				new \RecursiveDirectoryIterator($basePath . $path));
+		foreach ($it as $name) {
+			if (strtolower(substr($name, -4)) == ".png") {
+				$cmd = dirname(__DIR__) . "/bin/optipng " . escapeshellarg($name);
+				echo "$cmd\n";
+				//exec($tmp);
+			} else if (strtolower(substr($name, -4)) == ".jpg" || strtolower(substr($name, -5) == ".jpeg")) {
+				$cmd = dirname(__DIR__) . "/bin/jpegoptim " . escapeshellarg($name) . " --strip-all";
+				echo "$cmd\n";
+				//exec($tmp);
+			}
 		}
 	}
 }
