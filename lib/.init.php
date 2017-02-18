@@ -70,9 +70,18 @@ function OptimizeJs() {
 
 function OptimizeImages() {
 	// https://developers.google.com/speed/docs/insights/OptimizeImages?hl=ru
+	// sudo apt install optipng
+	// sudo apt install jpegoptim
 	set_time_limit(30 * 60);
 	$options = Options();
 	$basePath = dirname(dirname(dirname(dirname(__DIR__))));
+	if (strtoupper(substr(PHP_OS, 0, 3)) === "WIN") {
+		$pngCmd = dirname(__DIR__) . "/bin/optipng.exe ";
+		$jpgCmd = dirname(__DIR__) . "/bin/jpegoptim %s --strip-all";
+	} else {
+		$pngCmd = "optipng ";
+		$jpgCmd = "jpegoptim %s --strip-all";
+	}
 	foreach ($options["src_folders"] as $path) {
 		if (!is_dir($basePath . $path)) {
 			continue;
@@ -81,13 +90,13 @@ function OptimizeImages() {
 				new \RecursiveDirectoryIterator($basePath . $path));
 		foreach ($it as $name) {
 			if (strtolower(substr($name, -4)) == ".png") {
-				$cmd = dirname(__DIR__) . "/bin/optipng " . escapeshellarg($name);
-				echo "$cmd\n";
-				exec($cmd);
+				$tmp = $pngCmd . escapeshellarg($name);
+				echo "$tmp\n";
+				exec($tmp);
 			} else if (strtolower(substr($name, -4)) == ".jpg" || strtolower(substr($name, -5) == ".jpeg")) {
-				$cmd = dirname(__DIR__) . "/bin/jpegoptim " . escapeshellarg($name) . " --strip-all";
-				echo "$cmd\n";
-				exec($cmd);
+				$tmp = sprintf($jpgCmd, escapeshellarg($name));
+				echo "$tmp\n";
+				exec($tmp);
 			}
 		}
 	}

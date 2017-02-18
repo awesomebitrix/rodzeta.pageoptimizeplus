@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 // run:
-//	../../../../../apache2/zendserver/bin/php optimize-js.php
+//	"../../../../../apache2/zendserver/bin/php" optimize-js.php
 
 namespace Rodzeta\Pageoptimizeplus;
 
