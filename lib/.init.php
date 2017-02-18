@@ -8,6 +8,7 @@
 namespace Rodzeta\Pageoptimizeplus;
 
 function Options() {
+	// TODO get folders from settings
 	return array(
 		"src_folders" => array(
 			"/bitrix/templates/furniture_pale-blue",
