@@ -30,6 +30,8 @@
 
 `php optimize-js.php`
 
+- для оптимизации css и js - необходимо jre для возможности запуска java-приложений
+
 - для Linux необходимо установить optipng и jpegoptim, например
 
 `sudo apt install optipng`
