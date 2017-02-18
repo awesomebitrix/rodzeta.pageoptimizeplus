@@ -30,16 +30,15 @@ function ReplaceStyles($m) {
 }
 
 function init() {
+	if (\CSite::InDir("/bitrix/")) {
+		return;
+	}
+	if (Option::get("rodzeta.pageoptimizeplus", "move_css") != "Y") {
+		return;
+	}
 	EventManager::getInstance()->addEventHandler("main", "OnEndBufferContent", function (&$content) {
-		if (\CSite::InDir("/bitrix/")) {
-			return;
-		}
 		global $APPLICATION;
 		if ($APPLICATION->showPanelWasInvoked) { // ignore for admin panel
-			return;
-		}
-		// move css to bottom page
-		if (Option::get("rodzeta.pageoptimizeplus", "move_css") != "Y") {
 			return;
 		}
 		ctx::$styles = array();

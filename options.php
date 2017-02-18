@@ -68,7 +68,8 @@ $tabControl->begin();
 	 $tabControl->buttons();
   ?>
 
-  <input class="adm-btn-save" type="submit" name="save" value="Применить настройки">
+  <input class="adm-btn-save" type="submit" name="save"
+  	value="<?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_SAVE_SETTINGS") ?>">
 
 </form>
 
