@@ -69,6 +69,7 @@ function OptimizeJs() {
 }
 
 function OptimizeImages() {
+	// https://developers.google.com/speed/docs/insights/OptimizeImages?hl=ru
 	set_time_limit(30 * 60);
 	$options = Options();
 	$basePath = dirname(dirname(dirname(dirname(__DIR__))));
@@ -82,11 +83,11 @@ function OptimizeImages() {
 			if (strtolower(substr($name, -4)) == ".png") {
 				$cmd = dirname(__DIR__) . "/bin/optipng " . escapeshellarg($name);
 				echo "$cmd\n";
-				//exec($tmp);
+				exec($cmd);
 			} else if (strtolower(substr($name, -4)) == ".jpg" || strtolower(substr($name, -5) == ".jpeg")) {
 				$cmd = dirname(__DIR__) . "/bin/jpegoptim " . escapeshellarg($name) . " --strip-all";
 				echo "$cmd\n";
-				//exec($tmp);
+				exec($cmd);
 			}
 		}
 	}
