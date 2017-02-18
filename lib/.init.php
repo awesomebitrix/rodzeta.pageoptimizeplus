@@ -15,6 +15,9 @@ function OptimizeCss() {
 		"/local/templates/furniture_pale-blue",
 	);
 	$basePath = dirname(dirname(dirname(dirname(__DIR__))));
+	$cmd = "java -jar "
+		. dirname(__DIR__) . "/bin/yuicompressor-2.4.8.jar"
+		. " --type css";
 	foreach ($srcFolders as $path) {
 		if (!is_dir($basePath . $path)) {
 			continue;
@@ -25,7 +28,10 @@ function OptimizeCss() {
 			if (substr($name, -4) != ".css" || substr($name, -8) == ".min.css") {
 				continue;
 			}
-			echo "$name\n";
+			$dest = substr($name, 0, -4) . ".min.css";
+			$tmp = $cmd . " " . escapeshellarg($name) . " > " . escapeshellarg($dest);
+			echo "$tmp\n";
+			exec($tmp);
 		}
 	}
 }
