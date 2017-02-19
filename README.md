@@ -3,7 +3,7 @@
 
 ## Описание решения
 
-Данный модуль перемещает css теги (link) вниз страницы, по рекомендации https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery?hl=ru.
+Данный модуль перемещает css теги (link) вниз страницы, по [рекомендации Google](https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery?hl=ru).
 А так же содержит набор скриптов (см. в /bin/ модуля) для оптимизации css, js и изображений в указанных папках.
 
 ## Описание установки и настройки решения
@@ -41,18 +41,18 @@
 - для Linux необходимо установить optipng и jpegoptim, например
     ```
     sudo apt install optipng
-    
+
     sudo apt install jpegoptim
     ```
 
 ## Описание техподдержки и контактных данных
 
-Тех. поддержка и кастомизация оказывается на платной основе, e-mail: rivetweb@yandex.ru
+Тех. поддержка и кастомизация оказывается на платной основе, [e-mail](mailto:rivetweb@yandex.ru)
 
-Багрепорты и предложения на https://github.com/rivetweb/rodzeta.pageoptimizeplus/issues
+[Багрепорты и предложения](https://github.com/rivetweb/rodzeta.pageoptimizeplus/issues)
 
-Пул реквесты на https://github.com/rivetweb/rodzeta.pageoptimizeplus/pulls
+[Пул реквесты] (https://github.com/rivetweb/rodzeta.pageoptimizeplus/pulls)
 
 ## Ссылка на демо-версию
 
-http://villa-mia.ru/
+[http://villa-mia.ru/](http://villa-mia.ru/)
