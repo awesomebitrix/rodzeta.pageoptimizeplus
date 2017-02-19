@@ -16,44 +16,29 @@
 ### Использование скриптов для оптимизации
 
 - список файлов или папок для оптимизации задается в настройках модуля
-
 - для сайта в Bitrix-окружении для Windows запускать из папки модуля \bitrix\modules\rodzeta.pageoptimizeplus\bin
-
-`"../../../../../apache2/zendserver/bin/php" optimize-css.php`
-
-`"../../../../../apache2/zendserver/bin/php" optimize-js.php`
-
-`"../../../../../apache2/zendserver/bin/php" optimize-images.php`
-
-`"../../../../../apache2/zendserver/bin/php" restore-images.php`
-
+    `"../../../../../apache2/zendserver/bin/php" optimize-css.php`
+    `"../../../../../apache2/zendserver/bin/php" optimize-js.php`
+    `"../../../../../apache2/zendserver/bin/php" optimize-images.php`
+    `"../../../../../apache2/zendserver/bin/php" restore-images.php`
 - для любой версии интерпретатора или если есть возможность запуска на сервере - запускать из папки модуля
-
-`php optimize-css.php`
-
-`php optimize-js.php`
-
-`php optimize-images.php`
-
-`php restore-images.php`
-
+    `php optimize-css.php`
+    `php optimize-js.php`
+    `php optimize-images.php`
+    `php restore-images.php`
 - восстановить оригиналы `php restore-images.php` (при оптимизации изображений делается бекап файлов - добавляется расширение .original если такой файл еще не существует)
-
 - для оптимизации css и js - необходимо установить jre для возможности запуска java-приложений
-
 - для Linux необходимо установить optipng и jpegoptim, например
-
-`sudo apt install optipng`
-
-`sudo apt install jpegoptim`
+    `sudo apt install optipng`
+    `sudo apt install jpegoptim`
 
 ## Описание техподдержки и контактных данных
 
 Тех. поддержка и кастомизация оказывается на платной основе, e-mail: rivetweb@yandex.ru
 
-Багрепорты и предложения на https://github.com/rivetweb/bitrix-rodzeta.pageoptimizeplus/issues
+Багрепорты и предложения на https://github.com/rivetweb/rodzeta.pageoptimizeplus/issues
 
-Пул реквесты на https://github.com/rivetweb/bitrix-rodzeta.pageoptimizeplus/pulls
+Пул реквесты на https://github.com/rivetweb/rodzeta.pageoptimizeplus/pulls
 
 ## Ссылка на демо-версию
 
