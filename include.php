@@ -12,22 +12,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 use Bitrix\Main\EventManager;
 use Bitrix\Main\Config\Option;
 
-class ctx {
-	static $styles;
-}
-
-function ReplaceStyles($m) {
-	// ignore with attr data-skip-moving
-	if (strpos($m[1], 'data-skip-moving="true"') !== false) {
-		return $m[0];
-	}
-	// ignore other types
-	if (strpos($m[1], "stylesheet") === false) {
-		return $m[0];
-	}
-	ctx::$styles[] = $m[0];
-	return "";
-}
+require __DIR__ . "/lib/.init.php";
 
 function init() {
 	if (\CSite::InDir("/bitrix/")) {

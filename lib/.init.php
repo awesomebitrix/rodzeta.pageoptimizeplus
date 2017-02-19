@@ -7,6 +7,10 @@
 
 namespace Rodzeta\Pageoptimizeplus;
 
+class ctx {
+	static $styles;
+}
+
 function Options() {
 	// TODO get from module settings
 	return array(
@@ -19,6 +23,19 @@ function Options() {
 			"/upload/company.jpg",
 		)
 	);
+}
+
+function ReplaceStyles($m) {
+	// ignore with attr data-skip-moving
+	if (strpos($m[1], 'data-skip-moving="true"') !== false) {
+		return $m[0];
+	}
+	// ignore other types
+	if (strpos($m[1], "stylesheet") === false) {
+		return $m[0];
+	}
+	ctx::$styles[] = $m[0];
+	return "";
 }
 
 function OptimizeCss() {
