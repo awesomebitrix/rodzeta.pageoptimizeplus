@@ -10,7 +10,6 @@ namespace Rodzeta\Pageoptimizeplus;
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 use Bitrix\Main\Application;
-use Bitrix\Main\Config\Option;
 use Bitrix\Main\Localization\Loc;
 
 if (!$USER->isAdmin()) {
@@ -34,10 +33,11 @@ $tabControl = new \CAdminTabControl("tabControl", array(
 ?>
 
 <?php
-
+$options = Options();
 if ($request->isPost() && check_bitrix_sessid()) {
 	if ($request->getPost("save") != "" || $request->getPost("restore") != "") {
-		Option::set("rodzeta.pageoptimizeplus", "move_css", $request->getPost("move_css"));
+		$options["move_css"] = $request->getPost("move_css");
+		OptionUpdate($options);
 		\CAdminMessage::showMessage(array(
 	    "MESSAGE" => Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_OPTIONS_SAVED"),
 	    "TYPE" => "OK",
@@ -60,7 +60,7 @@ $tabControl->begin();
 		</td>
 		<td class="adm-detail-content-cell-r" width="50%">
 			<input name="move_css" value="Y" type="checkbox"
-				<?= Option::get("rodzeta.pageoptimizeplus", "move_css") == "Y"? "checked" : "" ?>>
+				<?= $options["move_css"] == "Y"? "checked" : "" ?>>
 		</td>
 	</tr>
 

@@ -7,13 +7,24 @@
 
 namespace Rodzeta\Pageoptimizeplus;
 
+define(__NAMESPACE__ . "\ID", "rodzeta.pageoptimizeplus");
+
+define(__NAMESPACE__ . "\SITE", substr($_SERVER["SERVER_NAME"], 0, 4) == "www."?
+	substr($_SERVER["SERVER_NAME"], 4) : $_SERVER["SERVER_NAME"]);
+
+define(__NAMESPACE__ . "\CONFIG",
+	$_SERVER["DOCUMENT_ROOT"] . "/upload/." . ID . "." . SITE);
+
+define(__NAMESPACE__ . "\FILE_OPTIONS", CONFIG . ".php"); // example: /upload/.rodzeta.pageoptimizeplus.localhost.php
+
 class ctx {
 	static $styles;
 }
 
 function Options() {
-	// TODO get from module settings
-	return array(
+	var_dump(FILE_OPTIONS);
+	$result = is_readable(FILE_OPTIONS)? include FILE_OPTIONS : array(
+		"move_css" => "Y",
 		"src_folders" => array(
 			"/bitrix/templates/",
 			"/local/templates/",
@@ -23,6 +34,11 @@ function Options() {
 			"/upload/company.jpg",
 		)
 	);
+	return $result;
+}
+
+function OptionsUpdate($options) {
+	//...
 }
 
 function ReplaceStyles($m) {

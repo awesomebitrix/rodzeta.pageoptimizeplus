@@ -10,7 +10,6 @@ namespace Rodzeta\Pageoptimizeplus;
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 use Bitrix\Main\EventManager;
-use Bitrix\Main\Config\Option;
 
 require __DIR__ . "/lib/.init.php";
 
@@ -18,7 +17,8 @@ function init() {
 	if (\CSite::InDir("/bitrix/")) {
 		return;
 	}
-	if (Option::get("rodzeta.pageoptimizeplus", "move_css") != "Y") {
+	$options = Options();
+	if ($options["move_css"] != "Y") {
 		return;
 	}
 	EventManager::getInstance()->addEventHandler("main", "OnEndBufferContent", function (&$content) {
