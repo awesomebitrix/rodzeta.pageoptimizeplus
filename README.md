@@ -20,21 +20,28 @@
 - для сайта в Bitrix-окружении для Windows запускать из папки модуля \bitrix\modules\rodzeta.pageoptimizeplus\bin
     ```
     "../../../../../apache2/zendserver/bin/php" optimize-css.php
+
     "../../../../../apache2/zendserver/bin/php" optimize-js.php
+
     "../../../../../apache2/zendserver/bin/php" optimize-images.php
+
     "../../../../../apache2/zendserver/bin/php" restore-images.php
     ```
 - для любой версии интерпретатора или если есть возможность запуска на сервере - запускать из папки модуля
     ```
     php optimize-css.php
+
     php optimize-js.php
+
     php optimize-images.php
+
     php restore-images.php
     ```
 - восстановить оригиналы `php restore-images.php` (при оптимизации изображений делается бекап файлов - добавляется расширение .original если такой файл еще не существует)
 - для Linux необходимо установить optipng и jpegoptim, например
     ```
     sudo apt install optipng
+    
     sudo apt install jpegoptim
     ```
 
