@@ -79,10 +79,10 @@ function OptimizeImages() {
 	$options = Options();
 	$basePath = dirname(dirname(dirname(dirname(__DIR__))));
 	if (strtoupper(substr(PHP_OS, 0, 3)) === "WIN") {
-		$pngCmd = dirname(__DIR__) . "/bin/optipng.exe "; // TODO use -o7 for optimize level
+		$pngCmd = dirname(__DIR__) . "/bin/optipng.exe -o7 ";
 		$jpgCmd = dirname(__DIR__) . "/bin/jpegoptim %s --strip-all";
 	} else {
-		$pngCmd = "optipng "; // TODO use -o7 for optimize level
+		$pngCmd = "optipng -o7 ";
 		$jpgCmd = "jpegoptim %s --strip-all";
 	}
 	foreach (array_merge($options["src_folders"], $options["src_files"]) as $path) {
