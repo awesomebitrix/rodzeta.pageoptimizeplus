@@ -102,7 +102,9 @@ function OptimizeImages($restore = false) {
 				} else {
 					$tmp = $pngCmd . escapeshellarg($name);
 					echo "$tmp\n";
-					copy($name, $name . ".original");
+					if (!file_exists($name . ".original")) {
+						copy($name, $name . ".original");
+					}
 					exec($tmp);
 				}
 			} else if (strtolower(substr($name, -4)) == ".jpg" || strtolower(substr($name, -5) == ".jpeg")) {
@@ -114,7 +116,9 @@ function OptimizeImages($restore = false) {
 				} else {
 					$tmp = sprintf($jpgCmd, escapeshellarg($name));
 					echo "$tmp\n";
-					copy($name, $name . ".original");
+					if (!file_exists($name . ".original")) {
+						copy($name, $name . ".original");
+					}
 					exec($tmp);
 				}
 			}
