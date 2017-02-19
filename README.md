@@ -18,17 +18,23 @@
 
 `"../../../../../apache2/zendserver/bin/php" optimize-css.php`
 
+`"../../../../../apache2/zendserver/bin/php" optimize-js.php`
+
 `"../../../../../apache2/zendserver/bin/php" optimize-images.php`
 
-`"../../../../../apache2/zendserver/bin/php" optimize-js.php`
+`"../../../../../apache2/zendserver/bin/php" restore-images.php`
 
 - для любой версии интерпретатора или если есть возможность запуска на сервере - запускать из папки модуля
 
 `php optimize-css.php`
 
+`php optimize-js.php`
+
 `php optimize-images.php`
 
-`php optimize-js.php`
+`php restore-images.php`
+
+- восстановить оригиналы `php restore-images.php` (при оптимизации изображений делается бекап файлов - добавляется расширение .original если такой файл еще не существует)
 
 - для оптимизации css и js - необходимо jre для возможности запуска java-приложений
 
