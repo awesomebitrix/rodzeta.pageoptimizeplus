@@ -73,7 +73,7 @@ function OptimizeJs() {
 	}
 }
 
-function OptimizeImages() {
+function OptimizeImages($restore = false) {
 	// https://developers.google.com/speed/docs/insights/OptimizeImages?hl=ru
 	set_time_limit(30 * 60);
 	$options = Options();
@@ -94,15 +94,29 @@ function OptimizeImages() {
 		}
 		foreach ($it as $name) {
 			if (strtolower(substr($name, -4)) == ".png") {
-				$tmp = $pngCmd . escapeshellarg($name);
-				echo "$tmp\n";
-				copy($name, $name . ".original");
-				exec($tmp);
+				if ($restore) {
+					if (file_exists($name . ".original")) {
+						echo "restore $name\n";
+						rename($name . ".original", $name);
+					}
+				} else {
+					$tmp = $pngCmd . escapeshellarg($name);
+					echo "$tmp\n";
+					copy($name, $name . ".original");
+					exec($tmp);
+				}
 			} else if (strtolower(substr($name, -4)) == ".jpg" || strtolower(substr($name, -5) == ".jpeg")) {
-				$tmp = sprintf($jpgCmd, escapeshellarg($name));
-				echo "$tmp\n";
-				copy($name, $name . ".original");
-				exec($tmp);
+				if ($restore) {
+					if (file_exists($name . ".original")) {
+						echo "restore $name\n";
+						rename($name . ".original", $name);
+					}
+				} else {
+					$tmp = sprintf($jpgCmd, escapeshellarg($name));
+					echo "$tmp\n";
+					copy($name, $name . ".original");
+					exec($tmp);
+				}
 			}
 		}
 	}
