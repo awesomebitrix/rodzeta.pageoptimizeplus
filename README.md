@@ -51,7 +51,7 @@
 
 [Багрепорты и предложения](https://github.com/rivetweb/rodzeta.pageoptimizeplus/issues)
 
-[Пул реквесты] (https://github.com/rivetweb/rodzeta.pageoptimizeplus/pulls)
+[Пул реквесты](https://github.com/rivetweb/rodzeta.pageoptimizeplus/pulls)
 
 ## Ссылка на демо-версию
 
