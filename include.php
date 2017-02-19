@@ -49,7 +49,8 @@ function init() {
 			$content
 		);
 
-		/*
+		/* loading css from js - not work for google pagespeed
+		// try to move after html
 		$stylesUrls = [];
 		foreach ($styles as $styleTag) {
 			if (preg_match('{href=([^\s]+)}i', $styleTag, $attrs)) {

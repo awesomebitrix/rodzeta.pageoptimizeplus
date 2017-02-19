@@ -8,13 +8,16 @@
 namespace Rodzeta\Pageoptimizeplus;
 
 function Options() {
-	// TODO get folders from settings
+	// TODO get from module settings
 	return array(
 		"src_folders" => array(
 			"/bitrix/templates/",
 			"/local/templates/",
 			"/upload/",
 		),
+		"src_files" => array(
+			"/upload/company.jpg",
+		)
 	);
 }
 
@@ -25,12 +28,13 @@ function OptimizeCss() {
 	$cmd = "java -jar "
 		. dirname(__DIR__) . "/bin/yuicompressor-2.4.8.jar"
 		. " --type css";
-	foreach ($options["src_folders"] as $path) {
-		if (!is_dir($basePath . $path)) {
-			continue;
-		}
-		$it = new \RecursiveIteratorIterator(
+	foreach (array_merge($options["src_folders"], $options["src_files"]) as $path) {
+		if (is_dir($basePath . $path)) {
+			$it = new \RecursiveIteratorIterator(
 				new \RecursiveDirectoryIterator($basePath . $path));
+		} else if (is_file($basePath . $path)) {
+			$it = array($basePath . $path);
+		}
 		foreach ($it as $name) {
 			if (substr($name, -4) != ".css" || substr($name, -8) == ".min.css") {
 				continue;
@@ -50,12 +54,13 @@ function OptimizeJs() {
 	$cmd = "java -jar "
 		. dirname(__DIR__) . "/bin/closure-compiler.jar"
 		. " --js %s --js_output_file %s";
-	foreach ($options["src_folders"] as $path) {
-		if (!is_dir($basePath . $path)) {
-			continue;
-		}
-		$it = new \RecursiveIteratorIterator(
+	foreach (array_merge($options["src_folders"], $options["src_files"]) as $path) {
+		if (is_dir($basePath . $path)) {
+			$it = new \RecursiveIteratorIterator(
 				new \RecursiveDirectoryIterator($basePath . $path));
+		} else if (is_file($basePath . $path)) {
+			$it = array($basePath . $path);
+		}
 		foreach ($it as $name) {
 			if (substr($name, -3) != ".js" || substr($name, -7) == ".min.js") {
 				continue;
@@ -74,26 +79,29 @@ function OptimizeImages() {
 	$options = Options();
 	$basePath = dirname(dirname(dirname(dirname(__DIR__))));
 	if (strtoupper(substr(PHP_OS, 0, 3)) === "WIN") {
-		$pngCmd = dirname(__DIR__) . "/bin/optipng.exe ";
+		$pngCmd = dirname(__DIR__) . "/bin/optipng.exe "; // TODO use -o7 for optimize level
 		$jpgCmd = dirname(__DIR__) . "/bin/jpegoptim %s --strip-all";
 	} else {
-		$pngCmd = "optipng ";
+		$pngCmd = "optipng "; // TODO use -o7 for optimize level
 		$jpgCmd = "jpegoptim %s --strip-all";
 	}
-	foreach ($options["src_folders"] as $path) {
-		if (!is_dir($basePath . $path)) {
-			continue;
-		}
-		$it = new \RecursiveIteratorIterator(
+	foreach (array_merge($options["src_folders"], $options["src_files"]) as $path) {
+		if (is_dir($basePath . $path)) {
+			$it = new \RecursiveIteratorIterator(
 				new \RecursiveDirectoryIterator($basePath . $path));
+		} else if (is_file($basePath . $path)) {
+			$it = array($basePath . $path);
+		}
 		foreach ($it as $name) {
 			if (strtolower(substr($name, -4)) == ".png") {
 				$tmp = $pngCmd . escapeshellarg($name);
 				echo "$tmp\n";
+				// TODO from settings - make backup -> $name.bak
 				exec($tmp);
 			} else if (strtolower(substr($name, -4)) == ".jpg" || strtolower(substr($name, -5) == ".jpeg")) {
 				$tmp = sprintf($jpgCmd, escapeshellarg($name));
 				echo "$tmp\n";
+				// TODO from settings - make backup -> $name.bak
 				exec($tmp);
 			}
 		}
