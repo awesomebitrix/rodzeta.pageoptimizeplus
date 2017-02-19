@@ -37,7 +37,7 @@ $options = Options();
 if ($request->isPost() && check_bitrix_sessid()) {
 	if ($request->getPost("save") != "" || $request->getPost("restore") != "") {
 		$options["move_css"] = $request->getPost("move_css");
-		OptionUpdate($options);
+		OptionsUpdate($options);
 		\CAdminMessage::showMessage(array(
 	    "MESSAGE" => Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_OPTIONS_SAVED"),
 	    "TYPE" => "OK",
