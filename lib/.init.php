@@ -41,6 +41,26 @@ function Options() {
 }
 
 function OptionsUpdate($options) {
+	$tmp = array();
+	foreach (explode("\n", $options["src_folders"]) as $v) {
+		$v = trim($v);
+		if ($v == "") {
+			continue;
+		}
+		$tmp[] = $v;
+	}
+	$options["src_folders"] = $tmp;
+
+	$tmp = array();
+	foreach (explode("\n", $options["src_files"]) as $v) {
+		$v = trim($v);
+		if ($v == "") {
+			continue;
+		}
+		$tmp[] = $v;
+	}
+	$options["src_files"] = $tmp;
+
 	\Encoding\PhpArray\Write(FILE_OPTIONS, $options);
 }
 
