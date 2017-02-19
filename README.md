@@ -14,6 +14,8 @@
 
 ### Использование скриптов для оптимизации
 
+- список файлов или папок для оптимизации задается в настройках модуля
+
 - для сайта в Bitrix-окружении для Windows запускать из папки модуля \bitrix\modules\rodzeta.pageoptimizeplus\bin
 
 `"../../../../../apache2/zendserver/bin/php" optimize-css.php`
