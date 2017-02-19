@@ -96,12 +96,12 @@ function OptimizeImages() {
 			if (strtolower(substr($name, -4)) == ".png") {
 				$tmp = $pngCmd . escapeshellarg($name);
 				echo "$tmp\n";
-				copy($name, $name . ".bak");
+				copy($name, $name . ".original");
 				exec($tmp);
 			} else if (strtolower(substr($name, -4)) == ".jpg" || strtolower(substr($name, -5) == ".jpeg")) {
 				$tmp = sprintf($jpgCmd, escapeshellarg($name));
 				echo "$tmp\n";
-				copy($name, $name . ".bak");
+				copy($name, $name . ".original");
 				exec($tmp);
 			}
 		}
