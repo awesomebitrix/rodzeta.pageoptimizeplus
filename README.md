@@ -47,7 +47,7 @@
 
 ## Описание техподдержки и контактных данных
 
-Тех. поддержка и кастомизация оказывается на платной основе, [e-mail](mailto:rivetweb@yandex.ru)
+Тех. поддержка и кастомизация оказывается на платной основе, запросы только по [e-mail](mailto:rivetweb@yandex.ru)
 
 [Багрепорты и предложения](https://github.com/rivetweb/rodzeta.pageoptimizeplus/issues)
 
