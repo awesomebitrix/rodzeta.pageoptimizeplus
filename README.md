@@ -43,6 +43,8 @@
     sudo apt install optipng
 
     sudo apt install jpegoptim
+
+    apt-get install libjpeg-progs
     ```
 
 ## Описание техподдержки и контактных данных
