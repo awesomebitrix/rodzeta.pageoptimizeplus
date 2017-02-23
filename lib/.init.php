@@ -7,9 +7,6 @@
 
 namespace Rodzeta\Pageoptimizeplus;
 
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
-
 define(__NAMESPACE__ . "\ID", "rodzeta.pageoptimizeplus");
 define(__NAMESPACE__ . "\APP", dirname(__DIR__) . "/");
 define(__NAMESPACE__ . "\LIB", APP . "lib/");
