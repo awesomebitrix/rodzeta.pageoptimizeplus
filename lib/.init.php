@@ -7,8 +7,8 @@
 
 namespace Rodzeta\Pageoptimizeplus;
 
-//ini_set("display_errors", 1);
-//error_reporting(E_ALL);
+ini_set("display_errors", 1);
+error_reporting(E_ALL);
 
 define(__NAMESPACE__ . "\ID", "rodzeta.pageoptimizeplus");
 define(__NAMESPACE__ . "\APP", dirname(__DIR__) . "/");
@@ -206,11 +206,7 @@ function OptimizeImages($restore = false) {
 		return;
 	}
 	$pngCmd = BIN . $tools["png"] . " -o7 ";
-	//$jpgCmd = BIN . $tools["jpg"] . " -quality %s -copy none -optimize -outfile %s %s"; // quality, dest, src
-	$jpgCmd = BIN . $tools["jpg"] . " -copy none -optimize -outfile %s %s"; // dest, src
-	if (empty($options["images"]["quality"])) {
-		$options["images"]["quality"] = 95;
-	}
+	$jpgCmd = BIN . $tools["jpg"] . "  -progressive -copy none -optimize -outfile %s %s"; // dest, src
 	foreach (array_merge($options["images"]["src_folders"], $options["images"]["src_files"]) as $path) {
 		if (is_dir($basePath . $path)) {
 			$it = new \RecursiveIteratorIterator(
@@ -248,12 +244,17 @@ function OptimizeImages($restore = false) {
 					}
 					$tmp = sprintf(
 						$jpgCmd,
-						//(int)$options["images"]["quality"],
 						escapeshellarg($name),
 						escapeshellarg($name . ".original")
 					);
 					echo "$tmp\n";
 					exec($tmp);
+					if (!empty($options["images"]["quality"]) && (int)$options["images"]["quality"]) {
+						if ($img = imagecreatefromjpeg($name)) {
+							imagejpeg($img, $name, (int)$options["images"]["quality"]);
+							imagedestroy($img);
+						}
+					}
 				}
 			}
 		}
