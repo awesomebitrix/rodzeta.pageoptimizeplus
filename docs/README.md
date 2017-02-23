@@ -4,7 +4,7 @@
 ## Описание решения
 
 Данный модуль перемещает css теги (link) вниз страницы, по [рекомендации Google](https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery?hl=ru).
-А так же содержит набор скриптов (см. в /bin/ модуля) для оптимизации css, js и изображений в указанных папках.
+А так же содержит набор скриптов (см. в /cli/ модуля) для оптимизации css, js и изображений в указанных папках.
 
 ## Описание установки и настройки решения
 
@@ -15,19 +15,19 @@
 
 ### Утилиты для оптимизаций
 
-Скачать и положить в папку bin или использовать поставляемые в модуле:
+Скачать и положить в папку `bin` или использовать поставляемые в модуле:
 
 - js optimize tools https://dl.google.com/closure-compiler/compiler-latest.zip
 
 - css optimize tools https://github.com/yui/yuicompressor/releases
 
-- image optimize tools https://ru.wordpress.org/plugins/ewww-image-optimizer/
+- image optimize tools https://ru.wordpress.org/plugins/ewww-image-optimizer/ (из папки binaries)
 
 ### Использование скриптов для оптимизации
 
 - список файлов или папок для оптимизации задается в настройках модуля
 - для оптимизации css и js - необходимо установить jre для возможности запуска java-приложений
-- для сайта в Bitrix-окружении для Windows запускать из папки модуля \bitrix\modules\rodzeta.pageoptimizeplus\bin
+- для сайта в Bitrix-окружении для Windows запускать из папки модуля \bitrix\modules\rodzeta.pageoptimizeplus\cli
     ```
     "../../../../../apache2/zendserver/bin/php" optimize-css.php
 
@@ -37,7 +37,7 @@
 
     "../../../../../apache2/zendserver/bin/php" restore-images.php
     ```
-- для любой версии интерпретатора или если есть возможность запуска на сервере - запускать из папки модуля
+- для любой версии интерпретатора или если есть возможность запуска на сервере - запускать из папки модуля `cli`
     ```
     php optimize-css.php
 
@@ -48,12 +48,6 @@
     php restore-images.php
     ```
 - восстановить оригиналы `php restore-images.php` (при оптимизации изображений делается бекап файлов - добавляется расширение .original если такой файл еще не существует)
-- для Linux необходимо установить optipng и jpegoptim, например
-    ```
-    sudo apt install optipng
-
-    sudo apt install jpegoptim
-    ```
 
 ## Описание техподдержки и контактных данных
 
