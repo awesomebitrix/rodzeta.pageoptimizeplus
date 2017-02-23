@@ -7,12 +7,19 @@
 
 namespace Rodzeta\Pageoptimizeplus;
 
+//ini_set("display_errors", 1);
+//error_reporting(E_ALL);
+
 define(__NAMESPACE__ . "\ID", "rodzeta.pageoptimizeplus");
 define(__NAMESPACE__ . "\APP", dirname(__DIR__) . "/");
 define(__NAMESPACE__ . "\LIB", APP  . "lib/");
 
-define(__NAMESPACE__ . "\SITE", substr($_SERVER["SERVER_NAME"], 0, 4) == "www."?
-	substr($_SERVER["SERVER_NAME"], 4) : $_SERVER["SERVER_NAME"]);
+if (!empty($_SERVER["SERVER_NAME"])) {
+	define(__NAMESPACE__ . "\SITE", substr($_SERVER["SERVER_NAME"], 0, 4) == "www."?
+		substr($_SERVER["SERVER_NAME"], 4) : $_SERVER["SERVER_NAME"]);
+} else { // for cli
+	define(__NAMESPACE__ . "\SITE", "localhost");
+}
 
 define(__NAMESPACE__ . "\CONFIG",
 	$_SERVER["DOCUMENT_ROOT"] . "/upload/." . ID . "." . SITE);
@@ -28,39 +35,52 @@ class ctx {
 function Options() {
 	$result = is_readable(FILE_OPTIONS)? include FILE_OPTIONS : array(
 		"move_css" => "Y",
-		"src_folders" => array(
-			"/bitrix/templates/",
-			"/local/templates/",
-			"/upload/",
+		"js_css" => array(
+			"src_folders" => array(
+				"/bitrix/templates/",
+				"/local/templates/",
+				"/upload/",
+			),
+			"src_files" => array(
+			)
 		),
-		"src_files" => array(
-			"/upload/company.jpg",
-		)
+		"images" => array(
+			"src_folders" => array(
+				"/bitrix/templates/",
+				"/local/templates/",
+				"/upload/",
+			),
+			"src_files" => array(
+				"/upload/company.jpg",
+			)
+		),
 	);
 	return $result;
 }
 
 function OptionsUpdate($options) {
-	$tmp = array();
-	foreach (explode("\n", $options["src_folders"]) as $v) {
-		$v = trim($v);
-		if ($v == "") {
-			continue;
+	foreach (array("js_css", "images") as $group) {
+		// convert src_folders
+		$tmp = array();
+		foreach (explode("\n", $options[$group]["src_folders"]) as $v) {
+			$v = trim($v);
+			if ($v == "") {
+				continue;
+			}
+			$tmp[] = $v;
 		}
-		$tmp[] = $v;
-	}
-	$options["src_folders"] = $tmp;
-
-	$tmp = array();
-	foreach (explode("\n", $options["src_files"]) as $v) {
-		$v = trim($v);
-		if ($v == "") {
-			continue;
+		$options[$group]["src_folders"] = $tmp;
+		// convert src_files
+		$tmp = array();
+		foreach (explode("\n", $options[$group]["src_files"]) as $v) {
+			$v = trim($v);
+			if ($v == "") {
+				continue;
+			}
+			$tmp[] = $v;
 		}
-		$tmp[] = $v;
+		$options[$group]["src_files"] = $tmp;
 	}
-	$options["src_files"] = $tmp;
-
 	\Encoding\PhpArray\Write(FILE_OPTIONS, $options);
 }
 
@@ -84,7 +104,7 @@ function OptimizeCss() {
 	$cmd = "java -jar "
 		. dirname(__DIR__) . "/bin/yuicompressor-2.4.8.jar"
 		. " --type css";
-	foreach (array_merge($options["src_folders"], $options["src_files"]) as $path) {
+	foreach (array_merge($options["js_css"]["src_folders"], $options["js_css"]["src_files"]) as $path) {
 		if (is_dir($basePath . $path)) {
 			$it = new \RecursiveIteratorIterator(
 				new \RecursiveDirectoryIterator($basePath . $path));
@@ -110,7 +130,7 @@ function OptimizeJs() {
 	$cmd = "java -jar "
 		. dirname(__DIR__) . "/bin/closure-compiler.jar"
 		. " --js %s --js_output_file %s";
-	foreach (array_merge($options["src_folders"], $options["src_files"]) as $path) {
+	foreach (array_merge($options["js_css"]["src_folders"], $options["js_css"]["src_files"]) as $path) {
 		if (is_dir($basePath . $path)) {
 			$it = new \RecursiveIteratorIterator(
 				new \RecursiveDirectoryIterator($basePath . $path));
@@ -142,7 +162,7 @@ function OptimizeImages($restore = false) {
 		$jpgCmd = "jpegoptim %s --strip-all";
 	}
 
-	foreach (array_merge($options["src_folders"], $options["src_files"]) as $path) {
+	foreach (array_merge($options["images"]["src_folders"], $options["images"]["src_files"]) as $path) {
 		if (is_dir($basePath . $path)) {
 			$it = new \RecursiveIteratorIterator(
 				new \RecursiveDirectoryIterator($basePath . $path));

@@ -38,8 +38,10 @@ if ($request->isPost() && check_bitrix_sessid()) {
 	if ($request->getPost("save") != "" || $request->getPost("restore") != "") {
 		$options = Options();
 		$options["move_css"] = $request->getPost("move_css");
-		$options["src_folders"] = $request->getPost("src_folders");
-		$options["src_files"] = $request->getPost("src_files");
+		$options["js_css"]["src_folders"] = $request->getPost("js_css_src_folders");
+		$options["js_css"]["src_files"] = $request->getPost("js_css_src_files");
+		$options["images"]["src_folders"] = $request->getPost("images_src_folders");
+		$options["images"]["src_files"] = $request->getPost("images_src_files");
 		OptionsUpdate($options);
 		\CAdminMessage::showMessage(array(
 	    "MESSAGE" => Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_OPTIONS_SAVED"),
@@ -68,21 +70,47 @@ $tabControl->begin();
 		</td>
 	</tr>
 
+	<tr class="heading">
+		<td colspan="2"><b><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_JS_CSS_SECTION") ?></b></td>
+	</tr>
+
 	<tr>
 		<td class="adm-detail-content-cell-l" width="50%">
-			<label><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_FOLDERS") ?></label>
+			<label><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_JS_CSS_FOLDERS") ?></label>
 		</td>
 		<td class="adm-detail-content-cell-r" width="50%">
-			<textarea name="src_folders" cols="60" rows="10"><?= implode("\n", $options["src_folders"]) ?></textarea>
+			<textarea name="js_css_src_folders" cols="60" rows="10"><?= implode("\n", $options["js_css"]["src_folders"]) ?></textarea>
 		</td>
 	</tr>
 
 	<tr>
 		<td class="adm-detail-content-cell-l" width="50%">
-			<label><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_FILES") ?></label>
+			<label><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_JS_CSS_FILES") ?></label>
 		</td>
 		<td class="adm-detail-content-cell-r" width="50%">
-			<textarea name="src_files" cols="60" rows="10"><?= implode("\n", $options["src_files"]) ?></textarea>
+			<textarea name="js_css_src_files" cols="60" rows="10"><?= implode("\n", $options["js_css"]["src_files"]) ?></textarea>
+		</td>
+	</tr>
+
+	<tr class="heading">
+		<td colspan="2"><b><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_IMAGES_SECTION") ?></b></td>
+	</tr>
+
+	<tr>
+		<td class="adm-detail-content-cell-l" width="50%">
+			<label><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_IMAGES_FOLDERS") ?></label>
+		</td>
+		<td class="adm-detail-content-cell-r" width="50%">
+			<textarea name="images_src_folders" cols="60" rows="10"><?= implode("\n", $options["js_css"]["src_folders"]) ?></textarea>
+		</td>
+	</tr>
+
+	<tr>
+		<td class="adm-detail-content-cell-l" width="50%">
+			<label><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_IMAGES_FILES") ?></label>
+		</td>
+		<td class="adm-detail-content-cell-r" width="50%">
+			<textarea name="images_src_files" cols="60" rows="10"><?= implode("\n", $options["js_css"]["src_files"]) ?></textarea>
 		</td>
 	</tr>
 
