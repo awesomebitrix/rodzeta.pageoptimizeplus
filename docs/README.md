@@ -25,7 +25,7 @@
 
 ### Как вытащить список изображений для оптимизации для страницы
 
-В интерактивное строке в консоли браузера ввести
+В интерактивной строке в консоли браузера ввести
 
 `var res = ["---"]; for (let obj of document.querySelector(".urls").querySelectorAll(".url-external")) res.push(obj.getAttribute("data-title")); res.push("---"); console.log(res.join("\n"));`
 
