@@ -251,8 +251,9 @@ function OptimizeImages($restore = false) {
 					exec($tmp);
 					if (!empty($options["images"]["quality"]) && (int)$options["images"]["quality"]) {
 						if ($img = imagecreatefromjpeg($name)) {
-							imagejpeg($img, $name, (int)$options["images"]["quality"]);
+							imagejpeg($img, $name . ".tmp", (int)$options["images"]["quality"]);
 							imagedestroy($img);
+							rename($name . ".tmp", $name);
 						}
 					}
 				}
