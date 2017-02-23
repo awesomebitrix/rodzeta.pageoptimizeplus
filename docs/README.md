@@ -23,6 +23,26 @@
 
 - image optimize tools https://ru.wordpress.org/plugins/ewww-image-optimizer/ (из папки binaries)
 
+### Как вытащить список изображений для оптимизации для страницы
+
+В интерактивное строке в консоли браузера ввести
+
+`var res = ["---"]; for (let obj of document.querySelector(".urls").querySelectorAll(".url-external")) res.push(obj.getAttribute("data-title")); res.push("---"); console.log(res.join("\n"));`
+
+### Как выполнить правило "Используйте кеш браузера"
+
+Увеличить кол-во дней для кеширования ресурсов, пример для Apache
+```
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType image/jpeg "access plus 30 day"
+    ExpiresByType image/gif "access plus 30 day"
+    ExpiresByType image/png "access plus 30 day"
+    ExpiresByType text/css "access plus 30 day"
+    ExpiresByType application/javascript "access plus 30 day"
+</IfModule>
+```
+
 ### Использование скриптов для оптимизации
 
 - список файлов или папок для оптимизации задается в настройках модуля
