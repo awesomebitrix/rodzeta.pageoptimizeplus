@@ -142,9 +142,6 @@ function OptimizeImages($restore = false) {
 		$jpgCmd = "jpegoptim %s --strip-all";
 	}
 
-	//TODO apt-get install libjpeg-progs
-	// jpegtran -copy none -optimize -outfile min.image.jpg image.jpg
-
 	foreach (array_merge($options["src_folders"], $options["src_files"]) as $path) {
 		if (is_dir($basePath . $path)) {
 			$it = new \RecursiveIteratorIterator(
