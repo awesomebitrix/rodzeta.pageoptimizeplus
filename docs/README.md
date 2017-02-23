@@ -23,11 +23,11 @@
 
 - image optimize tools https://ru.wordpress.org/plugins/ewww-image-optimizer/ (из папки binaries)
 
-### Как вытащить список изображений для оптимизации для заданной страницы
+### Как вытащить список ресурсов для оптимизации для заданной страницы
 
 После выполнения проверки страницы https://developers.google.com/speed/pagespeed/insights/?url=villa-mia.ru - в интерактивной строке в консоли браузера ввести
 
-`var res = ["---"]; for (let obj of document.querySelector(".urls").querySelectorAll(".url-external")) res.push(obj.getAttribute("data-title")); res.push("---"); console.log(res.join("\n"));`
+`var res = ["---"]; for (let obj of document.querySelectorAll(".url-external")) res.push(obj.getAttribute("data-title")); res.push("---"); console.log(res.join("\n"));`
 
 ### Как выполнить правило "Используйте кеш браузера"
 
