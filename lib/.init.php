@@ -81,7 +81,8 @@ function OptionsUpdate($options) {
 		}
 		$options[$group]["src_files"] = $tmp;
 	}
-	\Encoding\PhpArray\Write(FILE_OPTIONS, $options);
+	echo "<pre>"; print_r($options); echo "</pre>";
+	//\Encoding\PhpArray\Write(FILE_OPTIONS, $options);
 }
 
 function ReplaceStyles($m) {

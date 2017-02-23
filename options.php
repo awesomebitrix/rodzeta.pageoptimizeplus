@@ -101,7 +101,7 @@ $tabControl->begin();
 			<label><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_IMAGES_FOLDERS") ?></label>
 		</td>
 		<td class="adm-detail-content-cell-r" width="50%">
-			<textarea name="images_src_folders" cols="60" rows="10"><?= implode("\n", $options["js_css"]["src_folders"]) ?></textarea>
+			<textarea name="images_src_folders" cols="60" rows="10"><?= implode("\n", $options["images"]["src_folders"]) ?></textarea>
 		</td>
 	</tr>
 
@@ -110,7 +110,7 @@ $tabControl->begin();
 			<label><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_IMAGES_FILES") ?></label>
 		</td>
 		<td class="adm-detail-content-cell-r" width="50%">
-			<textarea name="images_src_files" cols="60" rows="10"><?= implode("\n", $options["js_css"]["src_files"]) ?></textarea>
+			<textarea name="images_src_files" cols="60" rows="10"><?= implode("\n", $options["images"]["src_files"]) ?></textarea>
 		</td>
 	</tr>
 
