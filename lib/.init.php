@@ -100,7 +100,8 @@ function OptimizeCss() {
 	set_time_limit(30 * 60);
 	$options = Options();
 	$basePath = dirname(dirname(dirname(dirname(__DIR__))));
-	$cmd = "java -jar " . BIN . "yuicompressor-2.4.8.jar --type css";
+	//$cmd = "java -jar " . BIN . "yuicompressor-2.4.8.jar --type css";
+	$cmd = "uglifycss";
 	foreach (array_merge($options["js_css"]["src_folders"], $options["js_css"]["src_files"]) as $path) {
 		if (is_dir($basePath . $path)) {
 			$it = new \RecursiveIteratorIterator(

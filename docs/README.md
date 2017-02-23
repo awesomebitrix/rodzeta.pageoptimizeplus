@@ -19,7 +19,7 @@
 
 - js optimize tools https://dl.google.com/closure-compiler/compiler-latest.zip
 
-- css optimize tools https://github.com/yui/yuicompressor/releases
+- css optimize tools `npm install uglifycss -g` https://github.com/fmarcia/UglifyCSS
 
 - image optimize tools https://ru.wordpress.org/plugins/ewww-image-optimizer/ (из папки binaries)
 
