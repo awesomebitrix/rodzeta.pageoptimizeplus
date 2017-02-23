@@ -47,7 +47,7 @@
 
 - список файлов или папок для оптимизации задается в настройках модуля
 - для оптимизации css и js - необходимо установить jre для возможности запуска java-приложений
-- для сайта в Bitrix-окружении для Windows запускать из папки модуля \bitrix\modules\rodzeta.pageoptimizeplus\cli
+- для сайта в Bitrix-окружении для Windows запускать из папки модуля `bitrix/modules/rodzeta.pageoptimizeplus/cli`
     ```
     "../../../../../apache2/zendserver/bin/php" optimize-css.php
 
@@ -57,7 +57,7 @@
 
     "../../../../../apache2/zendserver/bin/php" restore-images.php
     ```
-- для любой версии интерпретатора или если есть возможность запуска на сервере - запускать из папки модуля `cli`
+- для любой версии интерпретатора или если есть возможность запуска на сервере - запускать из папки модуля `bitrix/modules/rodzeta.pageoptimizeplus/cli`
     ```
     php optimize-css.php
 
