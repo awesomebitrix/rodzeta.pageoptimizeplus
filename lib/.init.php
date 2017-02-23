@@ -12,7 +12,9 @@ namespace Rodzeta\Pageoptimizeplus;
 
 define(__NAMESPACE__ . "\ID", "rodzeta.pageoptimizeplus");
 define(__NAMESPACE__ . "\APP", dirname(__DIR__) . "/");
-define(__NAMESPACE__ . "\LIB", APP  . "lib/");
+define(__NAMESPACE__ . "\LIB", APP . "lib/");
+define(__NAMESPACE__ . "\BIN", APP . "bin/");
+define(__NAMESPACE__ . "\CLI", APP . "cli/");
 
 if (!empty($_SERVER["SERVER_NAME"])) {
 	define(__NAMESPACE__ . "\SITE", substr($_SERVER["SERVER_NAME"], 0, 4) == "www."?
@@ -30,54 +32,6 @@ require LIB . "encoding/php-array.php";
 
 class ctx {
 	static $styles;
-}
-
-function CmdTools() {
-	$toolsByOs = array(
-		"win" => array(
-			"gifsicle" => "gifsicle.exe",
-			"optipng" => "optipng.exe",
-			"jpegtran" =>  "jpegtran.exe",
-			"pngquant" => "pngquant.exe",
-			"webp" => "cwebp.exe",
-		),
-		"darwin" => array(
-			"gifsicle" => "gifsicle-mac",
-			"optipng" => "optipng-mac",
-			"jpegtran" =>  "jpegtran-mac",
-			"pngquant" => "pngquant-mac",
-			"webp" => "cwebp-mac9",
-		),
-		"sunos" => array(
-			"gifsicle" => "gifsicle-sol",
-			"optipng" => "optipng-sol",
-			"jpegtran" =>  "jpegtran-sol",
-			"pngquant" => "pngquant-sol",
-			"webp" => "cwebp-sol",
-		),
-		"freebsd" => array(
-			"gifsicle" => "gifsicle-fbsd",
-			"optipng" => "optipng-fbsd",
-			"jpegtran" =>  "jpegtran-fbsd",
-			"pngquant" => "pngquant-fbsd",
-			"webp" => "cwebp-fbsd",
-		),
-		"linux" => array(
-			"gifsicle" => "gifsicle-linux",
-			"optipng" => "optipng-linux",
-			"jpegtran" =>  "jpegtran-linux",
-			"pngquant" => "pngquant-linux",
-			"webp" => "cwebp-linux",
-		),
-	);
-	$os = strtolower(PHP_OS);
-	if (substr($os, 0, 3) == "win") {
-		$os = "win";
-	}
-	if (!isset($toolsByOs[$os])) {
-		return array();
-	}
-	return $toolsByOs[$os];
 }
 
 function Options() {
@@ -149,9 +103,7 @@ function OptimizeCss() {
 	set_time_limit(30 * 60);
 	$options = Options();
 	$basePath = dirname(dirname(dirname(dirname(__DIR__))));
-	$cmd = "java -jar "
-		. dirname(__DIR__) . "/bin/yuicompressor-2.4.8.jar"
-		. " --type css";
+	$cmd = "java -jar " . BIN . "yuicompressor-2.4.8.jar --type css";
 	foreach (array_merge($options["js_css"]["src_folders"], $options["js_css"]["src_files"]) as $path) {
 		if (is_dir($basePath . $path)) {
 			$it = new \RecursiveIteratorIterator(
@@ -175,9 +127,7 @@ function OptimizeJs() {
 	set_time_limit(30 * 60);
 	$options = Options();
 	$basePath = dirname(dirname(dirname(dirname(__DIR__))));
-	$cmd = "java -jar "
-		. dirname(__DIR__) . "/bin/closure-compiler.jar"
-		. " --js %s --js_output_file %s";
+	$cmd = "java -jar " . BIN . "closure-compiler.jar --js %s --js_output_file %s";
 	foreach (array_merge($options["js_css"]["src_folders"], $options["js_css"]["src_files"]) as $path) {
 		if (is_dir($basePath . $path)) {
 			$it = new \RecursiveIteratorIterator(
@@ -197,19 +147,69 @@ function OptimizeJs() {
 	}
 }
 
+function ImageTools() {
+	$toolsByOs = array(
+		"win" => array(
+			"gif" => "gifsicle.exe",
+			"png" => "optipng.exe",
+			"jpg" =>  "jpegtran.exe",
+			"pngquant" => "pngquant.exe",
+			"webp" => "cwebp.exe",
+		),
+		"darwin" => array(
+			"gif" => "gifsicle-mac",
+			"png" => "optipng-mac",
+			"jpg" =>  "jpegtran-mac",
+			"pngquant" => "pngquant-mac",
+			"webp" => "cwebp-mac9",
+		),
+		"sunos" => array(
+			"gif" => "gifsicle-sol",
+			"png" => "optipng-sol",
+			"jpg" =>  "jpegtran-sol",
+			"pngquant" => "pngquant-sol",
+			"webp" => "cwebp-sol",
+		),
+		"freebsd" => array(
+			"gif" => "gifsicle-fbsd",
+			"png" => "optipng-fbsd",
+			"jpg" =>  "jpegtran-fbsd",
+			"pngquant" => "pngquant-fbsd",
+			"webp" => "cwebp-fbsd",
+		),
+		"linux" => array(
+			"gif" => "gifsicle-linux",
+			"png" => "optipng-linux",
+			"jpg" =>  "jpegtran-linux",
+			"pngquant" => "pngquant-linux",
+			"webp" => "cwebp-linux",
+		),
+	);
+	$os = strtolower(PHP_OS);
+	if (substr($os, 0, 3) == "win") {
+		$os = "win";
+	}
+	if (!isset($toolsByOs[$os])) {
+		return array();
+	}
+	return $toolsByOs[$os];
+}
+
 function OptimizeImages($restore = false) {
 	// https://developers.google.com/speed/docs/insights/OptimizeImages?hl=ru
 	set_time_limit(30 * 60);
 	$options = Options();
 	$basePath = dirname(dirname(dirname(dirname(__DIR__))));
-	if (strtoupper(substr(PHP_OS, 0, 3)) === "WIN") {
-		$pngCmd = dirname(__DIR__) . "/bin/optipng.exe -o7 ";
-		$jpgCmd = dirname(__DIR__) . "/bin/jpegoptim %s --strip-all";
-	} else {
-		$pngCmd = "optipng -o7 ";
-		$jpgCmd = "jpegoptim %s --strip-all";
+	$tools = ImageTools();
+	if (empty($tools)) {
+		echo "Tools for current OS not found.\n";
+		return;
 	}
-
+	$pngCmd = BIN . " -o7 ";
+	$jpgCmd = BIN . " -quality %d -copy none -optimize -outfile %s %s"; // quality, dest, src
+	if (empty($options["images"]["quality"])) {
+		$options["images"]["quality"] = 95;
+	}
 	foreach (array_merge($options["images"]["src_folders"], $options["images"]["src_files"]) as $path) {
 		if (is_dir($basePath . $path)) {
 			$it = new \RecursiveIteratorIterator(
@@ -219,31 +219,39 @@ function OptimizeImages($restore = false) {
 		}
 		foreach ($it as $name) {
 			if (strtolower(substr($name, -4)) == ".png") {
+				// process PNG
 				if ($restore) {
 					if (file_exists($name . ".original")) {
 						echo "restore $name\n";
 						rename($name . ".original", $name);
 					}
 				} else {
+					if (!file_exists($name . ".original")) {
+						copy($name, $name . ".original");
+					}
 					$tmp = $pngCmd . escapeshellarg($name);
 					echo "$tmp\n";
-					if (!file_exists($name . ".original")) {
-						copy($name, $name . ".original");
-					}
 					exec($tmp);
 				}
-			} else if (strtolower(substr($name, -4)) == ".jpg" || strtolower(substr($name, -5) == ".jpeg")) {
+			}
+			else if (strtolower(substr($name, -4)) == ".jpg" || strtolower(substr($name, -5) == ".jpeg")) {
+				// process JPG
 				if ($restore) {
 					if (file_exists($name . ".original")) {
 						echo "restore $name\n";
 						rename($name . ".original", $name);
 					}
 				} else {
-					$tmp = sprintf($jpgCmd, escapeshellarg($name));
-					echo "$tmp\n";
 					if (!file_exists($name . ".original")) {
 						copy($name, $name . ".original");
 					}
+					$tmp = sprintf(
+						$jpgCmd,
+						escapeshellarg($options["images"]["quality"]),
+						escapeshellarg($name),
+						escapeshellarg($name . ".original")
+					);
+					echo "$tmp\n";
 					exec($tmp);
 				}
 			}

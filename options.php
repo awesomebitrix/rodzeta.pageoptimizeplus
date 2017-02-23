@@ -40,6 +40,7 @@ if ($request->isPost() && check_bitrix_sessid()) {
 		$options["move_css"] = $request->getPost("move_css");
 		$options["js_css"]["src_folders"] = $request->getPost("js_css_src_folders");
 		$options["js_css"]["src_files"] = $request->getPost("js_css_src_files");
+		$options["images"]["quality"] = (int)$request->getPost("images_quality");
 		$options["images"]["src_folders"] = $request->getPost("images_src_folders");
 		$options["images"]["src_files"] = $request->getPost("images_src_files");
 		OptionsUpdate($options);
@@ -101,8 +102,7 @@ $tabControl->begin();
 			<label><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_IMAGES_QUALITY") ?></label>
 		</td>
 		<td class="adm-detail-content-cell-r" width="50%">
-			<input name="move_css" value="Y" type="checkbox"
-				<?= $options["move_css"] == "Y"? "checked" : "" ?>>
+			<input name="images_quality" value="<?= $options["images"]["quality"] ?>" type="text">
 		</td>
 	</tr>
 
