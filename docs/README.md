@@ -23,7 +23,6 @@
 
 - image optimize tools https://ru.wordpress.org/plugins/ewww-image-optimizer/
 
-
 ### Использование скриптов для оптимизации
 
 - список файлов или папок для оптимизации задается в настройках модуля
