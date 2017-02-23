@@ -24,7 +24,7 @@ if (!empty($_SERVER["SERVER_NAME"])) {
 }
 
 define(__NAMESPACE__ . "\CONFIG",
-	$_SERVER["DOCUMENT_ROOT"] . "/upload/." . ID . "." . SITE);
+	dirname(dirname(dirname(APP))) . "/upload/." . ID . "." . SITE);
 
 define(__NAMESPACE__ . "\FILE_OPTIONS", CONFIG . ".php"); // example: /upload/.rodzeta.pageoptimizeplus.localhost.php
 
@@ -205,8 +205,8 @@ function OptimizeImages($restore = false) {
 		echo "Tools for current OS not found.\n";
 		return;
 	}
-	$pngCmd = BIN . " -o7 ";
-	$jpgCmd = BIN . " -quality %d -copy none -optimize -outfile %s %s"; // quality, dest, src
+	$pngCmd = BIN . $tools["png"] . " -o7 ";
+	$jpgCmd = BIN . $tools["jpg"] . " -quality %d -copy none -optimize -outfile %s %s"; // quality, dest, src
 	if (empty($options["images"]["quality"])) {
 		$options["images"]["quality"] = 95;
 	}
