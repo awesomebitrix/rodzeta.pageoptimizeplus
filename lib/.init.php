@@ -206,7 +206,8 @@ function OptimizeImages($restore = false) {
 		return;
 	}
 	$pngCmd = BIN . $tools["png"] . " -o7 ";
-	$jpgCmd = BIN . $tools["jpg"] . " -quality %d -copy none -optimize -outfile %s %s"; // quality, dest, src
+	//$jpgCmd = BIN . $tools["jpg"] . " -quality %s -copy none -optimize -outfile %s %s"; // quality, dest, src
+	$jpgCmd = BIN . $tools["jpg"] . " -copy none -optimize -outfile %s %s"; // dest, src
 	if (empty($options["images"]["quality"])) {
 		$options["images"]["quality"] = 95;
 	}
@@ -247,7 +248,7 @@ function OptimizeImages($restore = false) {
 					}
 					$tmp = sprintf(
 						$jpgCmd,
-						escapeshellarg($options["images"]["quality"]),
+						//(int)$options["images"]["quality"],
 						escapeshellarg($name),
 						escapeshellarg($name . ".original")
 					);
