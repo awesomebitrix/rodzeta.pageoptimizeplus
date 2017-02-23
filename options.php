@@ -60,6 +60,10 @@ $tabControl->begin();
 
 	<?php $tabControl->beginNextTab() ?>
 
+	<tr class="heading">
+		<td colspan="2"><b><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_JS_CSS_SECTION") ?></b></td>
+	</tr>
+
 	<tr>
 		<td class="adm-detail-content-cell-l" width="50%">
 			<label><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_MOVE_STYLES") ?></label>
@@ -68,10 +72,6 @@ $tabControl->begin();
 			<input name="move_css" value="Y" type="checkbox"
 				<?= $options["move_css"] == "Y"? "checked" : "" ?>>
 		</td>
-	</tr>
-
-	<tr class="heading">
-		<td colspan="2"><b><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_JS_CSS_SECTION") ?></b></td>
 	</tr>
 
 	<tr>
