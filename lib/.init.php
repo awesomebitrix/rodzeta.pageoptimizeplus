@@ -81,7 +81,6 @@ function OptionsUpdate($options) {
 		}
 		$options[$group]["src_files"] = $tmp;
 	}
-	echo "<pre>"; print_r($options); echo "</pre>";
 	\Encoding\PhpArray\Write(FILE_OPTIONS, $options);
 }
 
