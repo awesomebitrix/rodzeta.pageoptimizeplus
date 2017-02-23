@@ -98,6 +98,16 @@ $tabControl->begin();
 
 	<tr>
 		<td class="adm-detail-content-cell-l" width="50%">
+			<label><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_IMAGES_QUALITY") ?></label>
+		</td>
+		<td class="adm-detail-content-cell-r" width="50%">
+			<input name="move_css" value="Y" type="checkbox"
+				<?= $options["move_css"] == "Y"? "checked" : "" ?>>
+		</td>
+	</tr>
+
+	<tr>
+		<td class="adm-detail-content-cell-l" width="50%">
 			<label><?= Loc::getMessage("RODZETA_PAGEOPTIMIZEPLUS_IMAGES_FOLDERS") ?></label>
 		</td>
 		<td class="adm-detail-content-cell-r" width="50%">

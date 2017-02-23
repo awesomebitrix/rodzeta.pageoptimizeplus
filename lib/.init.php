@@ -32,6 +32,54 @@ class ctx {
 	static $styles;
 }
 
+function CmdTools() {
+	$toolsByOs = array(
+		"win" => array(
+			"gifsicle" => "gifsicle.exe",
+			"optipng" => "optipng.exe",
+			"jpegtran" =>  "jpegtran.exe",
+			"pngquant" => "pngquant.exe",
+			"webp" => "cwebp.exe",
+		),
+		"darwin" => array(
+			"gifsicle" => "gifsicle-mac",
+			"optipng" => "optipng-mac",
+			"jpegtran" =>  "jpegtran-mac",
+			"pngquant" => "pngquant-mac",
+			"webp" => "cwebp-mac9",
+		),
+		"sunos" => array(
+			"gifsicle" => "gifsicle-sol",
+			"optipng" => "optipng-sol",
+			"jpegtran" =>  "jpegtran-sol",
+			"pngquant" => "pngquant-sol",
+			"webp" => "cwebp-sol",
+		),
+		"freebsd" => array(
+			"gifsicle" => "gifsicle-fbsd",
+			"optipng" => "optipng-fbsd",
+			"jpegtran" =>  "jpegtran-fbsd",
+			"pngquant" => "pngquant-fbsd",
+			"webp" => "cwebp-fbsd",
+		),
+		"linux" => array(
+			"gifsicle" => "gifsicle-linux",
+			"optipng" => "optipng-linux",
+			"jpegtran" =>  "jpegtran-linux",
+			"pngquant" => "pngquant-linux",
+			"webp" => "cwebp-linux",
+		),
+	);
+	$os = strtolower(PHP_OS);
+	if (substr($os, 0, 3) == "win") {
+		$os = "win";
+	}
+	if (!isset($toolsByOs[$os])) {
+		return array();
+	}
+	return $toolsByOs[$os];
+}
+
 function Options() {
 	$result = is_readable(FILE_OPTIONS)? include FILE_OPTIONS : array(
 		"move_css" => "Y",

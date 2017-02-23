@@ -13,6 +13,17 @@
 - для использования оптимизированных версий css и js необходимо включить чекбокс в настройках "Главный модуль" - "Подключать минифицированные версии CSS и JS файлов"
 - применить очистку файлов кеша /bitrix/admin/cache.php?lang=ru
 
+### Утилиты для оптимизаций
+
+Скачать и положить в папку bin или использовать поставляемые в модуле:
+
+- js optimize tools https://dl.google.com/closure-compiler/compiler-latest.zip
+
+- css optimize tools https://github.com/yui/yuicompressor/releases
+
+- image optimize tools https://ru.wordpress.org/plugins/ewww-image-optimizer/
+
+
 ### Использование скриптов для оптимизации
 
 - список файлов или папок для оптимизации задается в настройках модуля
