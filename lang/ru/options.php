@@ -1,14 +1,14 @@
 <?php
 
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_MAIN_TAB_SET"] = "Íàñòðîéêè";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_MAIN_TAB_TITLE_SET"] = "Íàñòðîéêà ïàðàìåòðîâ ìîäóëÿ";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_OPTIONS_SAVED"] = "Íàñòðîéêè ñîõðàíåíû";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_JS_CSS_SECTION"] = "Íàñòðîéêè js, css";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_JS_CSS_FOLDERS"] = "Ñïèñîê ïàïîê";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_MOVE_STYLES"] = "Ïåðåìåùàòü òåãè ñòèëåé âíèç";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_JS_CSS_FILES"] = "Ñïèñîê ôàéëîâ";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_IMAGES_SECTION"] = "Íàñòðîéêè èçîáðàæåíèé";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_IMAGES_QUALITY"] = "Êà÷åñòâî èçîáðàæåíèÿ (äëÿ jpg)";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_IMAGES_FOLDERS"] = "Ñïèñîê ïàïîê";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_IMAGES_FILES"] = "Ñïèñîê ôàéëîâ";
-$MESS["RODZETA_PAGEOPTIMIZEPLUS_SAVE_SETTINGS"] = "Ïðèìåíèòü íàñòðîéêè";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_MAIN_TAB_SET"] = "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_MAIN_TAB_TITLE_SET"] = "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ° Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð² Ð¼Ð¾Ð´ÑƒÐ»Ñ";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_OPTIONS_SAVED"] = "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ñ‹";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_JS_CSS_SECTION"] = "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ js, css";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_JS_CSS_FOLDERS"] = "Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð¿Ð°Ð¿Ð¾Ðº";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_MOVE_STYLES"] = "ÐŸÐµÑ€ÐµÐ¼ÐµÑ‰Ð°Ñ‚ÑŒ Ñ‚ÐµÐ³Ð¸ ÑÑ‚Ð¸Ð»ÐµÐ¹ Ð²Ð½Ð¸Ð·";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_JS_CSS_FILES"] = "Ð¡Ð¿Ð¸ÑÐ¾Ðº Ñ„Ð°Ð¹Ð»Ð¾Ð²";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_IMAGES_SECTION"] = "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð¸Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ð¹";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_IMAGES_QUALITY"] = "ÐšÐ°Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¸Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ (Ð´Ð»Ñ jpg)";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_IMAGES_FOLDERS"] = "Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð¿Ð°Ð¿Ð¾Ðº";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_IMAGES_FILES"] = "Ð¡Ð¿Ð¸ÑÐ¾Ðº Ñ„Ð°Ð¹Ð»Ð¾Ð²";
+$MESS["RODZETA_PAGEOPTIMIZEPLUS_SAVE_SETTINGS"] = "ÐŸÑ€Ð¸Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸";
