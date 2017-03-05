@@ -1,5 +1,5 @@
 ﻿
-# Модуль Дополнительная оптимизация страниц
+# Дополнительная оптимизация страниц
 
 ## Описание решения
 
@@ -15,13 +15,15 @@
 
 ### Утилиты для оптимизаций
 
-Скачать и положить в папку `bin` или использовать поставляемые в модуле:
+Скачать из [репозитария](https://github.com/rivetweb/rodzeta.pageoptimizeplus/tree/master/bin) и положить в папку `bin` модуля на сайте.
+
+Или скачать и положить в папку `bin` с сайта разработчиков:
 
 - js optimize tools https://dl.google.com/closure-compiler/compiler-latest.zip
 
 - css optimize tools https://github.com/fmarcia/UglifyCSS - `npm install uglifycss -g`
 
-- image optimize tools https://ru.wordpress.org/plugins/ewww-image-optimizer/ (из папки binaries)
+- image optimize tools https://ru.wordpress.org/plugins/ewww-image-optimizer/ (находятся в папке binaries плагина)
 
 ### Как вытащить список ресурсов для оптимизации для заданной страницы
 
